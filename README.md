@@ -1,1 +1,1 @@
-# Hugla core
+# Hugla framework node back-end

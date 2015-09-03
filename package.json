@@ -1,0 +1,15 @@
+{
+  "name": "hugla",
+  "version": "0.1.0",
+  "description": "hugla web framework's node back-end",
+  "keywords": "web, framework, hugla",
+  "homepage": "https://hugla.noosxe.com/",
+  "license": "",
+  "author": "noosxe <noosx.e@gmail.com> (https://noosxe.com/)",
+  "dependencies": {
+
+  },
+  "devDependencies": {
+
+  }
+}
