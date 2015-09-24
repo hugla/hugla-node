@@ -4,6 +4,7 @@ var EventEmitter = require('events').EventEmitter;
 var expect = require('chai').expect;
 var Hugla = require('./../index.js');
 var HuglaConfig = require('hugla-config');
+var HuglaLogger = require('hugla-logger');
 var Http = require('./../lib/http.js');
 
 describe('Hugla', function() {
@@ -17,6 +18,11 @@ describe('Hugla', function() {
     expect(hugla).to.be.an.instanceof(EventEmitter);
   });
 
+  it('should have log property', function() {
+    expect(hugla).to.have.a.property('log');
+    expect(hugla.log).to.be.instanceOf(HuglaLogger);
+  });
+  
   it('should have #boot() method', function() {
     expect(hugla).to.respondsTo('boot');
   });
