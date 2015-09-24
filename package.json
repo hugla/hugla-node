@@ -12,6 +12,7 @@
   "author": "noosxe <noosx.e@gmail.com> (https://noosxe.com/)",
   "dependencies": {
     "hugla-config": "git+ssh://git@bitbucket.org:hugla/hugla-node-config.git",
+    "hugla-logger": "git+ssh://git@bitbucket.org:hugla/hugla-node-logger.git",
     "express": "4.13.3",
     "lodash": "3.10.1"
   },

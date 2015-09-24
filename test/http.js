@@ -7,7 +7,7 @@ describe('Http', function() {
   var http = null;
 
   beforeEach(function() {
-    http = new Http({
+    http = new Http(null, {
       appDir: __dirname + '/app',
       assets: []
     });
