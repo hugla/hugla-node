@@ -22,7 +22,7 @@ describe('Hugla', function() {
     expect(hugla).to.have.a.property('log');
     expect(hugla.log).to.be.instanceOf(HuglaLogger);
   });
-  
+
   it('should have #boot() method', function() {
     expect(hugla).to.respondsTo('boot');
   });
