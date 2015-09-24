@@ -1,3 +1,3 @@
 'use strict';
 
-module.exports = require('./lib/hugla');
+module.exports = require('./lib/hugla.js');

@@ -11,9 +11,17 @@
   "license": "",
   "author": "noosxe <noosx.e@gmail.com> (https://noosxe.com/)",
   "dependencies": {
-    "express": "4.13.3"
+    "hugla-config": "git+ssh://git@bitbucket.org:hugla/hugla-node-config.git",
+    "express": "4.13.3",
+    "lodash": "3.10.1"
   },
   "devDependencies": {
-    "gulp": "^3.9.0"
+    "gulp": "^3.9.0",
+    "mocha": "2.3.3",
+    "chai": "3.3.0"
+  },
+  "scripts": {
+    "lint": "jshint index.js lib/**.js",
+    "test": "mocha --reporter spec --bail"
   }
 }
