@@ -8,8 +8,7 @@ describe('Http', function() {
 
   beforeEach(function() {
     http = new Http({
-      appDir: __dirname + '/app',
-      assets: []
+      appDir: __dirname + '/app'
     });
   });
 

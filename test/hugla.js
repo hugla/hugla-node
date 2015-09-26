@@ -23,40 +23,12 @@ describe('Hugla', function() {
     expect(hugla.log).to.be.instanceOf(HuglaLogger);
   });
 
-  it('should have #boot() method', function() {
-    expect(hugla).to.respondsTo('boot');
-  });
-
   it('should have #run() method', function() {
     expect(hugla).to.respondsTo('run');
   });
 
   it('should have #shutdown() method', function() {
     expect(hugla).to.respondsTo('shutdown');
-  });
-
-  describe('#boot()', function() {
-    var hugla = null;
-
-    beforeEach(function() {
-      hugla = new Hugla();
-      hugla.boot(__dirname + '/testconf.json', __dirname + '/app');
-    });
-
-    it('should add huglaConfig to properties', function() {
-      expect(hugla).to.have.a.property('huglaConfig');
-      expect(hugla.huglaConfig).to.be.instanceOf(HuglaConfig);
-    });
-
-    it('should add config to properties', function() {
-      expect(hugla).to.have.a.property('config');
-      expect(hugla.config).to.be.an('object');
-    });
-
-    it('should add http to properties', function() {
-      expect(hugla).to.have.a.property('http');
-      expect(hugla.http).to.be.instanceOf(Http);
-    });
   });
 
   describe('#run()', function() {
