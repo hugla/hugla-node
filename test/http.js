@@ -7,14 +7,10 @@ describe('Http', function() {
   var http = null;
 
   beforeEach(function() {
-    http = new Http(null, {
+    http = new Http({
       appDir: __dirname + '/app',
       assets: []
     });
-  });
-
-  it('should have config property', function() {
-    expect(http).to.have.a.property('config');
   });
 
   it('should have app property', function() {
