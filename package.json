@@ -13,9 +13,9 @@
   "dependencies": {
     "hugla-config": "git+ssh://git@bitbucket.org:hugla/hugla-node-config.git",
     "hugla-logger": "git+ssh://git@bitbucket.org:hugla/hugla-node-logger.git",
-    "express": "4.13.3",
     "lodash": "3.10.1",
-    "shortid": "2.2.2"
+    "shortid": "2.2.2",
+    "async": "1.4.2"
   },
   "devDependencies": {
     "gulp": "^3.9.0",
