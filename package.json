@@ -20,7 +20,8 @@
   "devDependencies": {
     "gulp": "^3.9.0",
     "mocha": "2.3.3",
-    "chai": "3.3.0"
+    "chai": "3.3.0",
+    "jshint": "2.8.0"
   },
   "scripts": {
     "lint": "jshint index.js lib/**.js",
