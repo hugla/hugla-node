@@ -25,6 +25,6 @@
   },
   "scripts": {
     "lint": "jshint index.js lib/**.js",
-    "test": "HUGLA_NO_EXIT=1 mocha --reporter spec --bail"
+    "test": "HUGLA_NO_EXIT=1 HUGLA_SILENT=1 mocha --reporter spec --bail"
   }
 }
