@@ -27,6 +27,12 @@ describe('Hugla', function() {
       expect(hugla.run).to.throw(Error);
     });
 
+    it("should throw an Error if required module was not found", function() {
+      expect(function() {
+        const test = new Hugla(__dirname, __dirname + '/testconf.json');
+      }).to.throw(Error);
+    });
+
     it('should have #run() method', function() {
       expect(hugla).to.respondsTo('run');
     });

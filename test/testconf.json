@@ -1,3 +1,4 @@
 {
-  "testValue": true
+  "testValue": true,
+  "modules": ["test"]
 }
