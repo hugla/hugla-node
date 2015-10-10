@@ -11,8 +11,8 @@
   "license": "",
   "author": "noosxe <noosx.e@gmail.com> (https://noosxe.com/)",
   "dependencies": {
-    "hugla-config": "git+ssh://git@bitbucket.org:hugla/hugla-node-config.git",
-    "hugla-logger": "git+ssh://git@bitbucket.org:hugla/hugla-node-logger.git",
+    "hugla-config": "0.1.x",
+    "hugla-logger": "0.1.x",
     "lodash": "3.10.1",
     "shortid": "2.2.2",
     "async": "1.4.2"
