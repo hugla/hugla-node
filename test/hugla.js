@@ -1,7 +1,13 @@
 "use strict";
 
 const EventEmitter = require('events').EventEmitter;
-const expect = require('chai').expect;
+
+const chai = require("chai");
+const sinon = require("sinon");
+const sinonChai = require("sinon-chai");
+const expect = chai.expect;
+chai.use(sinonChai);
+
 const Hugla = require('./../index.js');
 
 describe('Hugla', function() {
@@ -10,6 +16,14 @@ describe('Hugla', function() {
     expect(function() {
       new Hugla();
     }).to.throw(Error);
+  });
+
+  it("should call #shutdown if error event occurs", function() {
+    const hugla = new Hugla(__dirname);
+    hugla.shutdown = sinon.spy();
+    hugla.emit('error', new Error('test'));
+
+    expect(hugla.shutdown).to.have.been.called;
   });
 
   describe('instance', function() {
