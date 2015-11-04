@@ -19,7 +19,8 @@
     "hugla-logger": "0.1.x",
     "lodash": "3.10.1",
     "shortid": "2.2.2",
-    "async": "1.4.2"
+    "async": "1.4.2",
+    "commander": "2.9.0"
   },
   "devDependencies": {
     "gulp": "^3.9.0",
