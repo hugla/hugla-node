@@ -11,6 +11,9 @@
   "license": "MIT",
   "repository": "hugla/hugla-node",
   "author": "noosxe <noosx.e@gmail.com> (https://noosxe.com/)",
+  "bin": {
+    "hugla": "./bin/hugla.js"
+  },
   "dependencies": {
     "hugla-config": "0.1.x",
     "hugla-logger": "0.1.x",
