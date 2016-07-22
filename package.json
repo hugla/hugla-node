@@ -39,6 +39,8 @@
     "sinon-chai": "2.8.0"
   },
   "scripts": {
+    "compile": "babel --presets es2015,stage-0 -d lib/ src/",
+    "prepublish": "npm run compile",
     "lint": "jshint index.js lib/**.js",
     "test": "HUGLA_NO_EXIT=1 HUGLA_SILENT=1 mocha --reporter spec --bail",
     "test-ci": "HUGLA_NO_EXIT=1 HUGLA_SILENT=1 istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec"
