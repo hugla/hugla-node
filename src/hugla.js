@@ -1,19 +1,19 @@
 'use strict';
 
-const util = require('util');
-const EventEmitter = require('events').EventEmitter;
+import util from 'util';
+import { EventEmitter } from 'events';
 
-const _ = require('lodash');
-const async = require('async');
-const shortid = require('shortid');
+import _ from 'lodash';
+import async from 'async';
+import shortid from 'shortid';
 
-const HuglaConfig = require('hugla-config');
-const HuglaLogger = require('hugla-logger');
+import HuglaConfig from 'hugla-config';
+import HuglaLogger from 'hugla-logger';
 
 /**
  * Hugla - hugla's main class
  */
-class Hugla extends EventEmitter {
+export default class Hugla extends EventEmitter {
 
   /**
    * Class constructor
@@ -270,5 +270,3 @@ class Hugla extends EventEmitter {
     this.shutdown(err);
   }
 }
-
-module.exports = Hugla;

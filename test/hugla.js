@@ -1,14 +1,14 @@
 "use strict";
 
-const EventEmitter = require('events').EventEmitter;
+import { EventEmitter } from 'events';
 
-const chai = require("chai");
-const sinon = require("sinon");
-const sinonChai = require("sinon-chai");
-const expect = chai.expect;
+import chai, { expect } from "chai";
+import sinon from "sinon";
+import sinonChai from "sinon-chai";
+
 chai.use(sinonChai);
 
-const Hugla = require('./../index.js');
+import Hugla from './../lib/hugla.js';
 
 describe('Hugla', function() {
 
