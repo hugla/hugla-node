@@ -1,10 +1,6 @@
-'use strict';
-
-import util from 'util';
 import { EventEmitter } from 'events';
 
 import _ from 'lodash';
-import async from 'async';
 import shortid from 'shortid';
 
 import HuglaConfig from 'hugla-config';
@@ -14,7 +10,6 @@ import HuglaLogger from 'hugla-logger';
  * Hugla - hugla's main class
  */
 export default class Hugla extends EventEmitter {
-
   /**
    * Class constructor
    * Requires application directory path
@@ -41,9 +36,9 @@ export default class Hugla extends EventEmitter {
     process.on('SIGINT', this.__onSIGINT);
 
     // handle hugla errors
-    this.on('error', function(err) {
+    this.on('error', (err) => {
       this.shutdown(err);
-    }.bind(this));
+    });
 
     // handle uncaught exceptions
     this.__onUncaughtException = this._onUncaughtException.bind(this);
@@ -68,7 +63,7 @@ export default class Hugla extends EventEmitter {
     huglaConfig.addEnv();
 
     huglaConfig.addConfig(_.assign({
-      appDir: appDir
+      appDir,
     }, configs || {}));
 
     const config = this.config = huglaConfig.config;
