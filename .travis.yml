@@ -1,8 +1,7 @@
 language: node_js
 node_js:
-  - "4.2"
-  - "4.1"
-  - "4.0"
+  - "4.8.x"
+  - "6.11.x"
 sudo: false
 script: "npm run-script test-ci"
 after_script: "npm install coveralls@2.11.4 && cat ./coverage/lcov.info | coveralls"

@@ -44,6 +44,6 @@
     "prepublish": "npm run compile",
     "lint": "jshint index.js lib/**.js",
     "test": "HUGLA_NO_EXIT=1 HUGLA_SILENT=1 mocha --compilers js:babel-core/register --reporter spec --bail",
-    "test-ci": "HUGLA_NO_EXIT=1 HUGLA_SILENT=1 istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec"
+    "test-ci": "HUGLA_NO_EXIT=1 HUGLA_SILENT=1 istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec --compilers js:babel-core/register"
   }
 }
