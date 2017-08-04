@@ -51,10 +51,12 @@ export default class Hugla extends EventEmitter {
     }
 
     // setup logger
-    const log = this.log = new HuglaLogger({ module: 'hugla' });
+    const log = new HuglaLogger({ module: 'hugla' });
+    this.log = log;
 
     // setup configuration
-    const huglaConfig = this.huglaConfig = new HuglaConfig();
+    const huglaConfig = new HuglaConfig();
+    this.huglaConfig = huglaConfig;
 
     if (configPath) {
       huglaConfig.addFile(configPath);
@@ -66,22 +68,23 @@ export default class Hugla extends EventEmitter {
       appDir,
     }, configs || {}));
 
-    const config = this.config = huglaConfig.config;
+    const config = huglaConfig.config;
+    this.config = config;
 
     // create modules instances
     log.info('loading modules');
 
-    for (let moduleName of config.modules || []) {
+    (config.modules || []).forEach((moduleName) => {
       const ModuleClass = require(moduleName);
       this.modules.set(moduleName, new ModuleClass(this));
-      log.info('loaded module [' + moduleName + ']');
-    }
+      log.info(`loaded module [${moduleName}]`);
+    });
 
     log.info('modules loaded');
 
-    process.nextTick(function() {
+    process.nextTick(() => {
       this._execLaunchActions();
-    }.bind(this));
+    });
   }
 
   /**
@@ -89,10 +92,10 @@ export default class Hugla extends EventEmitter {
    */
   run() {
     if (!this.ready) {
-      throw new Error("framework not ready to run!");
+      throw new Error('framework not ready to run!');
     }
 
-    this._asyncIterMap(this.runActions, function(err) {
+    Hugla._asyncIterMap(this.runActions, (err) => {
       if (err) {
         this.shutdown(err);
         return;
@@ -100,7 +103,7 @@ export default class Hugla extends EventEmitter {
 
       this.log.info('running');
       this.emit('running');
-    }.bind(this));
+    });
   }
 
   /**
@@ -113,25 +116,25 @@ export default class Hugla extends EventEmitter {
     this.emit('shutdown');
 
     if (err) {
-      if (typeof err == 'string') {
+      if (typeof err === 'string') {
         this.log.error('%s', err);
       } else if (err instanceof Error) {
-        this.log.error("\n" + err.stack);
+        this.log.error(`\n${err.stack}`);
       } else {
         this.log.error(err);
       }
     }
 
-    this._asyncIterMap(this.shutdownActions, function(err) {
+    this._asyncIterMap(this.shutdownActions, (ierr) => {
       this.log.info('shutting down!');
       process.removeListener('SIGTERM', this.__onSIGTERM);
       process.removeListener('SIGINT', this.__onSIGINT);
       process.removeListener('uncaughtException', this.__onUncaughtException);
 
       if (!process.env.HUGLA_NO_EXIT) {
-        process.exit(err ? 1 : 0);
+        process.exit(ierr ? 1 : 0);
       }
-    }.bind(this));
+    });
   }
 
   /**
@@ -140,8 +143,9 @@ export default class Hugla extends EventEmitter {
    * @param {string} moduleName Name of module to return
    */
   getModule(moduleName) {
-    if (!this.modules.has(moduleName)) throw new Error("asking for module" +
-      " that is not loaded");
+    if (!this.modules.has(moduleName)) {
+      throw new Error('asking for module that is not loaded');
+    }
 
     return this.modules.get(moduleName);
   }
@@ -211,7 +215,7 @@ export default class Hugla extends EventEmitter {
     const log = this.log;
 
     // process launch actions
-    this._asyncIterMap(this.launchActions, function(err) {
+    this._asyncIterMap(this.launchActions, (err) => {
       if (err) {
         this.shutdown(err);
         return;
@@ -220,10 +224,10 @@ export default class Hugla extends EventEmitter {
       this.ready = true;
       log.info('ready');
 
-      process.nextTick(function() {
+      process.nextTick(() => {
         this.emit('ready');
-      }.bind(this));
-    }.bind(this));
+      });
+    });
   }
 
   /**
@@ -231,15 +235,15 @@ export default class Hugla extends EventEmitter {
    * @param {Map} map Map object to iterate over
    * @param {function} done Callback function
    */
-  _asyncIterMap(map, done) {
+  static _asyncIterMap(map, done) {
     const it = map.values();
-    const iterator = function(action) {
+    const iterator = (action) => {
       if (!action.value) {
         process.nextTick(done);
         return;
       }
 
-      action.value(function(err) {
+      action.value((err) => {
         if (err) {
           done(err);
         } else {
