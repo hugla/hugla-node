@@ -125,7 +125,7 @@ export default class Hugla extends EventEmitter {
       }
     }
 
-    this._asyncIterMap(this.shutdownActions, (ierr) => {
+    Hugla._asyncIterMap(this.shutdownActions, (ierr) => {
       this.log.info('shutting down!');
       process.removeListener('SIGTERM', this.__onSIGTERM);
       process.removeListener('SIGINT', this.__onSIGINT);
@@ -215,7 +215,7 @@ export default class Hugla extends EventEmitter {
     const log = this.log;
 
     // process launch actions
-    this._asyncIterMap(this.launchActions, (err) => {
+    Hugla._asyncIterMap(this.launchActions, (err) => {
       if (err) {
         this.shutdown(err);
         return;
