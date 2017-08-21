@@ -16,12 +16,12 @@
   },
   "main": "./lib/hugla.js",
   "dependencies": {
-    "hugla-config": "0.1.x",
-    "hugla-logger": "0.1.x",
-    "lodash": "3.10.1",
-    "shortid": "2.2.2",
     "async": "1.4.2",
-    "commander": "2.9.0"
+    "commander": "2.9.0",
+    "hugla-config": "0.2.x",
+    "hugla-logger": "0.2.x",
+    "lodash": "3.10.1",
+    "shortid": "2.2.2"
   },
   "devDependencies": {
     "babel-cli": "6.24.x",
@@ -36,7 +36,7 @@
     "jest": "^20.0.4"
   },
   "scripts": {
-    "compile": "babel --presets es2015,es2016 -d lib/ src/",
+    "compile": "babel -d lib/ src/",
     "prepublish": "npm run compile",
     "lint": "./node_modules/.bin/eslint --ext .js src",
     "test": "./node_modules/.bin/jest --silent",

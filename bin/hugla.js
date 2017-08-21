@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-"use strict";
+const path = require('path');
 
 const program = require('commander');
-const pkg = require(__dirname + '/../package.json');
+const pkg = require(path.join(__dirname, '/../package.json'));
 
 program
   .version(pkg.version)
