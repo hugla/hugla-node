@@ -75,7 +75,7 @@ export default class Hugla extends EventEmitter {
     log.info('loading modules');
 
     (config.modules || []).forEach((moduleName) => {
-      const ModuleClass = require(moduleName);
+      const ModuleClass = require(moduleName).default;
       this.modules.set(moduleName, new ModuleClass(this));
       log.info(`loaded module [${moduleName}]`);
     });
